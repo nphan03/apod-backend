@@ -21,7 +21,7 @@ exports.cmtValidator = [
 ];
 
 let today = new Date();
-let today_str = `${today.getFullYear()}/${today.getMonth()}/${today.getDate()}`;
+let today_str = `${today.getFullYear()}/${today.getMonth()+1}/${today.getDate()}`;
 
 exports.dateValidator = [
     check("date")

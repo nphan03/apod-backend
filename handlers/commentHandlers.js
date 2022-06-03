@@ -2,26 +2,26 @@ const Comment = require("../models/Comment.js")
 const {User} = require("../models/User.js")
 const {validationResult} = require("express-validator")
 
-const addComment = (user, newComment) => {
+const addComment = (user, newComment,res) => {
   newComment
   .save(err => {
     if(err) console.log(err)
     else {
       user.comments.push(newComment._id)
       user
-      .save((err)=>{
-        if(err) console.log(err)
+      .save(error=>{
+        if(error) console.log(err)
         res.send(newComment)
       })
     }
   })
 }
 
-const addNewUserandAddComment = (newUser, newComment) => {
+const addNewUserandAddComment = (newUser, newComment, res) => {
   newUser.save(err => {
     if(err) console.log(err)
     else {
-      addComment(newUser, newComment)
+      addComment(newUser, newComment, res)
     }
   })
 }
@@ -47,12 +47,12 @@ exports.postComment = (req, res) => {
     .exec()
     .then(user => {
       if(user != null){
-        addComment(user, new_comment)
+        addComment(user, new_comment, res)
       }else{
         let newUser = new User({
           email: req.body.email
         })
-        addNewUserandAddComment(newUser, new_comment)
+        addNewUserandAddComment(newUser, new_comment, res)
       }
     })
   }
