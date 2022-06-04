@@ -10,7 +10,7 @@ const addComment = (user, newComment,res) => {
       user.comments.push(newComment._id)
       user
       .save(error=>{
-        if(error) console.log(err)
+        if(error) res.send(err)
         res.send(newComment)
       })
     }
@@ -83,7 +83,7 @@ exports.postEmail = (req,res) => {
           res.send("This email was used. Seem like you already subcribed to our website")
         }else{
           new_user.save(err => {
-            if   (err) console.log(err)
+            if   (err) res.send(err)
             else res.send("Thanks for your subscription")
         })
       }
