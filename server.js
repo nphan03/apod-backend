@@ -23,7 +23,7 @@ app.get("/comments/:date", getComment);
 connection.once('open', ()=>{
    console.log('connected to db');
   
-    const server = app.listen(process.env.PORT || 3030, ()=>{
-        console.log(`listening on ${process.env.PORT}`);
+    const server = app.listen(8080, ()=>{
+        console.log(`listening on 8080`);
     });
 }); 
