@@ -23,7 +23,7 @@ app.get("/comments/:date", getComment);
 connection.once('open', ()=>{
    console.log('connected to db');
   
-    const server = app.listen(8080, ()=>{
+    const server = app.listen(80, ()=>{
         console.log(`App Backend is running`);
     });
 }); 
