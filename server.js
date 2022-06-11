@@ -24,6 +24,6 @@ connection.once('open', ()=>{
    console.log('connected to db');
   
     const server = app.listen(8080, ()=>{
-        console.log(`listening on 8080`);
+        console.log(`App Backend is running`);
     });
 }); 
